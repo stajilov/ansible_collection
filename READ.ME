@@ -1,0 +1,25 @@
+sudo ansible-playbook "lemp.yml" --extra-vars "container_state=started network_state=present" - Plays the role.
+sudo ansible-playbook "lemp.yml" --extra-vars "container_state=absent network_state=absent" - Destoyes the role
+
+Variables for states depending on which network and containers will get stopped, started, removed, paused
+
+netwokd_state =  absent | present
+container_state = absent | present | stopped |started.
+
+
+sudo ansible-playbook "deploy.yml" --extra-vars "container_state=started network_state=present"
+
+
+
+# Debug container:
+
+sudo docker logs --tail 50 --follow --timestamps php
+
+
+# Edit vars
+
+especitally db host, name, etc: roles/vars/main.yaml (check the role used in respective playbook - currently lemp.yml)
+
+
+---Draft
+sudo docker cp ./php-app/* php:/var/www/app/

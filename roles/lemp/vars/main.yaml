@@ -1,0 +1,9 @@
+    docker_network: network
+    stack_name: lemp_classic_
+    container_state: started
+    network_state: present
+    db_root_password: root
+    db_name: root
+    db_user: root
+    db_password: root
+    db_host: percona

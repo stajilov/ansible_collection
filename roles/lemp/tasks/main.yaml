@@ -1,0 +1,54 @@
+
+- name: Create network
+  docker_network:
+    name: "{{ stack_name }}{{ docker_network }}"
+    ipam_config:
+      - subnet: "172.16.98.0/24"
+    state: "{{ network_state }}"
+    force: yes
+
+- name: Run Nginx container
+  docker_container:
+    name: '{{ stack_name }}nginx'
+    recreate: true
+    restart_policy: unless-stopped
+    image: 'nginx:latest'
+    published_ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./app.conf:/etc/nginx/conf.d/app.conf"
+      - "./php-app/:/var/www/app/"
+    networks:
+      - name: "{{ stack_name }}{{ docker_network }}"
+    state: "{{ container_state }}"
+
+- name: Run PHP container
+  docker_container:
+    name: 'php'
+    recreate: true
+    restart_policy: unless-stopped
+    image: 'nanoninja/php-fpm'
+    volumes:
+      - "./php.ini:/usr/local/etc/php/conf.d/php.ini"
+      - "./php-app/:/var/www/app/"
+    networks:
+      - name: "{{ stack_name }}{{ docker_network }}"
+    state: "{{ container_state }}"
+
+- name: Run Percona container
+  docker_container:
+    name: '{{ db_host }}'
+    recreate: true
+    restart_policy: unless-stopped
+    image: 'percona:latest'
+    volumes:
+      - "percona:/var/lib/mysql"
+    env:
+      MYSQL_ROOT_PASSWORD: "{{ db_root_password }}"
+      MYSQL_DATABASE:  "{{ db_name }}"
+      MYSQL_USER:  "{{ db_user }}"
+      MYSQL_PASSWORD:  "{{ db_password }}"
+    networks:
+      - name: "{{ stack_name }}{{ docker_network }}"
+    state: "{{ container_state }}"
