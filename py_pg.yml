@@ -2,7 +2,7 @@
 # which allow access to all users
 - hosts: localhost
   roles:
-  - role: postgresql
+  - role: pg
     postgresql_version: "12"
     postgresql_server_listen: "'*'"
     postgresql_server_auth:
