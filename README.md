@@ -31,5 +31,14 @@ sudo docker logs --tail 50 --follow --timestamps php
 especitally db host, name, etc: roles/vars/main.yaml (check the role used in respective playbook - currently lemp.yml)
 
 
+
+# Postgres
+
+ansible-galaxy install ome.postgresql_client
+
 ---Draft
 sudo docker cp ./php-app/* php:/var/www/app/
+
+git subtree add --prefix roles/pg  https://github.com/ome/ansible-role-postgresql.git  master --squash
+
+git subtree add --prefix roles/dotnet  https://github.com/ocha/ansible-role-dotnet-core.git  master --squash
