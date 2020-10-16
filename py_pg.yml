@@ -1,0 +1,17 @@
+# Simple example relying on the default Postgres PUBLIC privileges
+# which allow access to all users
+- hosts: localhost
+  roles:
+  - role: postgresql
+    postgresql_version: 12
+    postgresql_server_listen: "'*'"
+    postgresql_server_auth:
+    - database: publicdb
+      user: postgres
+      address: 192.168.1.0/24
+    postgresql_databases:
+    - name: publicdb
+    postgresql_users:
+    - user: postgres
+      password: AdvancedStuff!!#love
+      databases: []

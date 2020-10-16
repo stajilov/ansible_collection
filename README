@@ -1,3 +1,13 @@
+
+# Playbooks end 2 end (ubuntu)
+
+[x] LEMP with containers
+[ ] Python3 + Postgres
+[ ] Dotnet + Postgrrs
+[ ] JS: Npm, Typescript + Postgres
+[ ] Java, Postgres
+
+
 sudo ansible-playbook "lemp.yml" --extra-vars "container_state=started network_state=present" - Plays the role.
 sudo ansible-playbook "lemp.yml" --extra-vars "container_state=absent network_state=absent" - Destoyes the role
 
