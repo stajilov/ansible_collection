@@ -3,7 +3,7 @@
 - hosts: localhost
   roles:
   - role: postgresql
-    postgresql_version: 12
+    postgresql_version: "12"
     postgresql_server_listen: "'*'"
     postgresql_server_auth:
     - database: publicdb
