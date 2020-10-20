@@ -33,7 +33,7 @@ especitally db host, name, etc: roles/vars/main.yaml (check the role used in res
 
 
 # Postgres
-
+before installing
 ansible-galaxy install ome.postgresql_client
 
 ---Draft
