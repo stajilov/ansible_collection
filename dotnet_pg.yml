@@ -3,3 +3,16 @@
   - role: dotnet
     dotnet_package: "dotnet-sdk-3.1"
     dotnet_debian_repo_gpg_key_url: "https://packages.microsoft.com/keys/microsoft.asc"
+  - role: pg
+    postgresql_version: "12"
+    postgresql_server_listen: "'*'"
+    postgresql_server_auth:
+    - database: publicdb
+      user: postgres
+      address: 192.168.1.0/24
+    postgresql_databases:
+    - name: dotnetappdb
+    postgresql_users:
+    - user: postgres
+      password: AdvancedStuff!!#love
+      databases: []
