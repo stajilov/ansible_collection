@@ -35,10 +35,10 @@ especitally db host, name, etc: roles/vars/main.yaml (check the role used in res
 # Postgres
 before installing
 
-ansible-galaxy install ome.postgresql_client
+`sudo ansible-galaxy install ome.postgresql_client`
 
 # Python + Postgres
-ansible-playbook py_pg.ym
+`sudo ansible-playbook py_pg.yml`
 
 
 ---Draft
