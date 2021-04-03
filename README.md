@@ -49,7 +49,9 @@ git subtree add --prefix roles/pg  https://github.com/ome/ansible-role-postgresq
 git subtree add --prefix roles/dotnet  https://github.com/ocha/ansible-role-dotnet-core.git  master --squash
 
 
+# Nginx
 
+ansible-galaxy install nginxinc.nginx
 
 
 # Copyright of PG role:
