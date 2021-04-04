@@ -51,7 +51,7 @@ git subtree add --prefix roles/dotnet  https://github.com/ocha/ansible-role-dotn
 
 # Nginx
 
-ansible-galaxy install nginxinc.nginx
+sudo ansible-galaxy install -r requirements.yml
 
 
 # Copyright of PG role:

@@ -1,0 +1,62 @@
+- hosts: localhost
+
+  vars:
+    domain: helloworld.com
+    ansible_user: root
+    run_address: 0.0.0.0
+    run_port: 5000
+
+  roles:
+  - role: ome.postgresql_client
+  - role: pg
+    postgresql_version: "12"
+    postgresql_server_listen: "'*'"
+    postgresql_server_auth:
+    - database: publicdb
+      user: postgres
+      address: 192.168.1.0/24
+    postgresql_databases:
+    - name: publicdb
+    postgresql_users:
+    - user: postgres
+      password: AdvancedStuff!!#love
+      databases: []
+  - role: bihealth.python3
+  - role: nginxinc.nginx
+  - role: robertdebock.npm
+
+  tasks:
+  - name: "apt-get update"
+    apt:
+      update_cache: yes
+      cache_valid_time: 3600
+
+  - name: "create root directory"
+    file:
+      path: /var/{{ domain }}
+      state: directory
+      mode: '0775'
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+  
+  - name: delete default nginx site
+    file:
+      path: /etc/nginx/sites-enabled/default
+      state: absent
+    notify: restart nginx
+
+  - name: copy nginx site.conf
+    template:
+      src: nginx/hosts.conf.j2
+      dest: /etc/nginx/sites-enabled/{{ domain }}
+      owner: root
+      group: root
+      mode: '0644'
+    notify: restart nginx
+  
+  
+  handlers:
+  - name: restart nginx
+    service:
+      name: nginx
+      state: restarted
