@@ -3,3 +3,4 @@
 - src: ocha.dotnet-core
 - src: bihealth.python3
 - src: robertdebock.npm
+- src: geerlingguy.certbot
