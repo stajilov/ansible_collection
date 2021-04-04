@@ -1,7 +1,7 @@
 - hosts: localhost
 
   vars:
-    domain: helloworld.com
+    domain: cyberwhale.tech
     ansible_user: root
     run_address: 0.0.0.0
     run_port: 5000
