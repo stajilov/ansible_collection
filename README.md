@@ -37,8 +37,17 @@ before installing
 
 `sudo ansible-galaxy install ome.postgresql_client`
 
-# Python + Postgres
+# Python + Postgres + npm
 `sudo ansible-playbook py_pg.yml`
+
+# Dotnet core + postgres + npm
+`sudo ansible-playbook dotnet_pg.yml`
+
+# Example of all roles combined + nginx config
+`sudo ansible-playbook universal_playbook.yml`
+
+
+
 
 
 ---Draft
