@@ -3,6 +3,7 @@
   - role: ocha.dotnet-core
     dotnet_package: "dotnet-sdk-3.1"
     dotnet_debian_repo_gpg_key_url: "https://packages.microsoft.com/keys/microsoft.asc"
+  - role: robertdebock.npm
   - role: pg
     postgresql_version: "12"
     postgresql_server_listen: "'*'"
