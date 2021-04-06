@@ -2,9 +2,9 @@
 # Playbooks end 2 end (ubuntu)
 
 [x] LEMP with containers
-[ ] Python3 + Postgres
+[X] Python3 + Postgres
 [X] Dotnet + Postgrrs
-[ ] JS: Npm, Typescript + Postgres
+[X ] JS: Npm, Typescript + Postgres
 [ ] Java, Postgres
 
 
@@ -37,6 +37,8 @@ before installing
 
 `sudo ansible-galaxy install ome.postgresql_client`
 
+`sudo ansible-galaxy install -r requirements.yml`
+
 # Python + Postgres + npm
 `sudo ansible-playbook py_pg.yml`
 
@@ -58,9 +60,7 @@ git subtree add --prefix roles/pg  https://github.com/ome/ansible-role-postgresq
 git subtree add --prefix roles/dotnet  https://github.com/ocha/ansible-role-dotnet-core.git  master --squash
 
 
-# Nginx
 
-sudo ansible-galaxy install -r requirements.yml
 
 
 # Copyright of PG role:
